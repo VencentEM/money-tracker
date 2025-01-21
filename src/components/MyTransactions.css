@@ -1,0 +1,50 @@
+/* MyTransactions.css */
+body {
+    background-color: #17181f;
+    color: #ddd;
+}
+
+.transactions-page {
+    max-width: 360px;
+    margin: 30px auto;
+}
+
+.transactions-header {
+    text-align: center;
+    font-size: 2rem;
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+.transaction-list {
+    margin-top: 10px;
+    border-top: 1px solid #30313d;
+}
+
+.transaction-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid #30313d;
+}
+
+.transaction-item:last-child {
+    border-bottom: none;
+}
+
+.transaction-details {
+    color: #bbb;
+    font-size: 0.9rem;
+}
+
+.transaction-amount {
+    font-weight: bold;
+}
+
+.transaction-amount.green {
+    color: #1c1;
+}
+
+.transaction-amount.red {
+    color: #c11;
+}

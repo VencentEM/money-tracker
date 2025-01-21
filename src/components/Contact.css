@@ -1,0 +1,30 @@
+.social-icons {
+    display: flex;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.social-icons a {
+    text-decoration: none;
+}
+
+.icon {
+    font-size: 2rem;
+    color: #ddd;
+    transition: color 0.3s;
+}
+
+.icon.facebook:hover {
+    color: #3b5998;
+    /* Facebook blue */
+}
+
+.icon.twitter:hover {
+    color: #1da1f2;
+    /* Twitter blue */
+}
+
+.icon.instagram:hover {
+    color: #e1306c;
+    /* Instagram pink */
+}
