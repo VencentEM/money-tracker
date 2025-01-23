@@ -22,7 +22,7 @@ function CreateAccount() {
     }
 
     const url = process.env.REACT_APP_API_URL
-      ? ${ process.env.REACT_APP_API_URL }/register
+      ? `${process.env.REACT_APP_API_URL}/register`
       : 'http://localhost:5000/api/register'; // Replace with your backend endpoint
 
     // Call the API

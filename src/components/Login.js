@@ -1,5 +1,3 @@
-Login.js
-
 import { useState } from "react";
 
 function Login({ setIsLoggedIn }) {
@@ -11,8 +9,8 @@ function Login({ setIsLoggedIn }) {
         ev.preventDefault();
 
         const url = process.env.REACT_APP_API_URL
-            ? ${ process.env.REACT_APP_API_URL }/login
-      : 'http://localhost:5000/api/login'; // Replace with your backend endpoint
+            ? `${process.env.REACT_APP_API_URL}/login`
+            : 'http://localhost:5000/api/login'; // Replace with your backend endpoint
 
         fetch(url, {
             method: 'POST',
