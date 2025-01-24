@@ -1,70 +1,162 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+# Money Tracker App
 
-In the project directory, you can run:
+## Overview
 
-### `yarn start`
+The Money Tracker App is a robust application built with React for the frontend, Node.js and Express.js for the backend, and MongoDB as the database. The app allows users to track, manage, and analyze their finances, providing a seamless experience for personal or business financial tracking.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Features
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- User authentication and authorization.
+- Record and update transactions.
+- Categorize income and expenses.
+- Generate detailed financial reports.
+- Responsive design for a smooth user experience on all devices.
 
-### `yarn test`
+---
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Setup Instructions
 
-### `yarn build`
+### Prerequisites
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- [Node.js](https://nodejs.org/) (version 14.x or higher)
+- [MongoDB](https://www.mongodb.com/) (local or cloud instance)
+- [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Backend Setup
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. Clone the repository:
+   ```bash
+   git clone <repository-url>
+   cd money-tracker-app/backend
+   ```
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Create a `.env` file in the `backend` directory and add the following:
+   ```env
+   PORT=5000
+   MONGO_URI=<your-mongodb-connection-string>
+   JWT_SECRET=<your-jwt-secret>
+   ```
+4. Start the backend server:
+   ```bash
+   npm start
+   ```
+   The backend server will run on `http://localhost:5000`.
 
-### `yarn eject`
+### Frontend Setup
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+1. Navigate to the frontend directory:
+   ```bash
+   cd ../frontend
+   ```
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Start the frontend development server:
+   ```bash
+   npm start
+   ```
+   The frontend will run on `http://localhost:3000`.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+---
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Usage Guidelines
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Running the Application
 
-## Learn More
+1. Ensure MongoDB is running and accessible via the connection string in your `.env` file.
+2. Start the backend and frontend servers as described in the setup instructions.
+3. Open your browser and navigate to `http://localhost:3000`.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### API Endpoints
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+The backend provides the following key API endpoints for managing users and transactions:
 
-### Code Splitting
+#### Authentication
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- **Register User**: `POST /register`
 
-### Analyzing the Bundle Size
+  - Request Body: `{ username, email, password }`
+  - Response: Confirmation of successful registration or an error message.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- **Login User**: `POST /login`
 
-### Making a Progressive Web App
+  - Request Body: `{ email, password }`
+  - Response: JWT token and user details upon successful login.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+#### Transactions
 
-### Advanced Configuration
+- **Create Transaction**: `POST /transaction`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+  - Requires: Authentication (via JWT in `Authorization` header).
+  - Request Body: `{ price, description, datetime }`
+  - Response: Confirmation of transaction creation.
 
-### Deployment
+- **Get Transactions**: `GET /transaction`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+  - Requires: Authentication.
+  - Response: List of transactions for the authenticated user.
 
-### `yarn build` fails to minify
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Project Architecture
+
+### Frontend
+
+- Built with React.
+- State management using Context API.
+- Styled with CSS-in-JS or traditional CSS/SCSS modules.
+
+### Backend
+
+- Built with Node.js and Express.js.
+- RESTful API structure.
+- Middleware for authentication, validation, and error handling.
+
+### Database
+
+- MongoDB for data storage.
+- Mongoose for schema modeling and interactions with MongoDB.
+
+### Folder Structure
+
+```
+money-tracker-app/
+|-- api/                         # Backend API logic
+|   |-- routes/                  # API route definitions
+|   |-- controllers/             # Route handlers and controllers
+|   |-- models/                  # Database models
+|   |-- middleware/              # Middleware (e.g., auth, validation)
+|-- public/                      # Public static assets
+|-- src/                         # Frontend source code
+|   |-- components/              # Reusable UI components
+|   |-- pages/                   # Page components
+|   |-- context/                 # Context API for state management
+|   |-- App.js                   # Main React app entry point
+|   |-- index.js                 # React DOM rendering
+|-- .env                         # Environment variables
+|-- .gitignore                   # Git ignored files and directories
+|-- README.md                    # Project documentation
+|-- package-lock.json            # Dependency lock file for npm
+|-- package.json                 # Project dependencies and scripts
+|-- yarn.lock                    # Dependency lock file for Yarn
+```
+
+---
+
+## Contribution Guidelines
+
+1. Fork the repository and create a new branch for your feature or bug fix.
+2. Commit your changes with clear messages.
+3. Submit a pull request describing your changes.
+
+---
+
+## License
+
+This project is licensed under the MIT License. See the `LICENSE` file for more details.
