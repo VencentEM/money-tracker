@@ -148,15 +148,3 @@ money-tracker-app/
 ```
 
 ---
-
-## Contribution Guidelines
-
-1. Fork the repository and create a new branch for your feature or bug fix.
-2. Commit your changes with clear messages.
-3. Submit a pull request describing your changes.
-
----
-
-## License
-
-This project is licensed under the MIT License. See the `LICENSE` file for more details.
